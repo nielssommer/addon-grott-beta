@@ -1,6 +1,6 @@
 ---
 name: Grott Beta branch (3.0)
-version: 0.2.2
+version: 0.2.4
 slug: grott-beta
 description: The Growatt inverter monitor with the current Home Assistant plugin integrated
 url: https://github.com/nielssommer/addon-grott-beta

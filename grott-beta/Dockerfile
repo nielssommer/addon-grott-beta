@@ -23,7 +23,9 @@ RUN curl -Lk "https://github.com/johanmeijer/grott/archive/$GIT_REF.zip" --outpu
 # Grott Alpha declares these server settings but does not yet read them from
 # environment variables. The add-on exposes them through its configuration UI.
 COPY grottconf-env.patch /tmp/grottconf-env.patch
-RUN patch -l -p0 < /tmp/grottconf-env.patch && rm /tmp/grottconf-env.patch
+RUN patch -p0 < /tmp/grottconf-env.patch \
+    && sed -i "s/self.grottport = self.getenv('ggrottport')/self.grottport = int(self.getenv('ggrottport'))/" grottconf.py \
+    && rm /tmp/grottconf-env.patch
 
 COPY requirements.txt requirements.txt
 #Install required python packages
