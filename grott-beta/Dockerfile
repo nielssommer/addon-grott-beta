@@ -18,7 +18,7 @@ COPY script.sh /app/script.sh
 RUN chmod a+x /app/script.sh
 
 WORKDIR /app
-RUN curl -Lk "https://github.com/johanmeijer/grott/archive/$GIT_REF.zip" --output files.zip && unzip -o files.zip && rm files.zip && mv grott-*/*.py ./
+RUN curl -Lk "https://github.com/johanmeijer/grott/archive/$GIT_REF.zip" --output files.zip && unzip -o files.zip && rm files.zip && mv grott-*/*.py ./ && sed -i 's/\r$//' grottconf.py
 
 # Grott Alpha declares these server settings but does not yet read them from
 # environment variables. The add-on exposes them through its configuration UI.
