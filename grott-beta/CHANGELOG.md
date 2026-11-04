@@ -1,11 +1,12 @@
 # Changelog
 
-## 0.2.0
+## 0.2.1
 
 - Update Grott to the current Alpha revision with integrated Grottserver
 - Run Grottserver with MQTT and Home Assistant plugin support by default
 - Expose Grottserver TCP port 5781 and HTTP control API port 5782
 - Configure Grottserver forwarding and HTTP port directly in the add-on UI
+- Use the `bind-tools` version provided by the Home Assistant base image
 
 ## 0.1.9
 

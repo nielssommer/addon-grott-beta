@@ -10,7 +10,7 @@ ENV LANG C.UTF-8
 # Install python/pip
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache \
-        bind-tools=9.18.44-r0 \
+        bind-tools \
         patch
 
 # Copy data for add-on
