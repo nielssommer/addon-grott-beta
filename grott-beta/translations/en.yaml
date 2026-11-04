@@ -27,6 +27,19 @@ configuration:
     description: >-
       An inverter mapping in the form {"SERIAL": "type"}
       e.g.: for an SPH6000 with serial "NWO00415E3" : {"NWO00415E3": "sph"}
+  gmode:
+    name: Operating mode
+    description: >-
+      Use server to run Grottserver with MQTT and Home Assistant discovery.
+      Use proxy only for a data-forwarding Grott installation without control.
+  gserverpassthrough:
+    name: Forward data to Growatt
+    description: >-
+      Keep this enabled to forward datalogger traffic to Growatt while
+      Grottserver is running locally.
+  ghttpport:
+    name: Grottserver HTTP API port
+    description: The HTTP API port used by integrations to issue inverter commands.
   ha_plugin:
     name: Home Assistant plugin
     description: >-

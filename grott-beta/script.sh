@@ -35,6 +35,14 @@ if bashio::config.has_value 'gmode'; then
     gmode="$(bashio::config 'gmode')"
     export gmode
 fi
+if bashio::config.has_value 'gserverpassthrough'; then
+    gserverpassthrough="$(bashio::config 'gserverpassthrough')"
+    export gserverpassthrough
+fi
+if bashio::config.has_value 'ghttpport'; then
+    ghttpport="$(bashio::config 'ghttpport')"
+    export ghttpport
+fi
 if bashio::config.has_value 'ggrottip'; then
     ggrottip="$(bashio::config 'ggrottip')"
     export ggrottip

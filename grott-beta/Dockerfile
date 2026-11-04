@@ -2,13 +2,16 @@ ARG BUILD_FROM=ghcr.io/hassio-addons/base-python:16.1.4
 # hadolint ignore=DL3006
 FROM $BUILD_FROM
 
-ENV GIT_REF=acf84e3f6b09a0906f986671218e6a8e2319f72d
+# Grott Alpha contains the integrated Grottserver implementation used for
+# inverter control. Keep this pinned so add-on builds remain reproducible.
+ENV GIT_REF=6e0dfbef452f8510ab08041d1f1609186c5d8419
 ENV LANG C.UTF-8
 
 # Install python/pip
 ENV PYTHONUNBUFFERED=1
 RUN apk add --update --no-cache \
-        bind-tools=9.18.44-r0
+        bind-tools=9.18.44-r0 \
+        patch
 
 # Copy data for add-on
 COPY script.sh /app/script.sh
@@ -16,6 +19,11 @@ RUN chmod a+x /app/script.sh
 
 WORKDIR /app
 RUN curl -Lk "https://github.com/johanmeijer/grott/archive/$GIT_REF.zip" --output files.zip && unzip -o files.zip && rm files.zip && mv grott-*/*.py ./
+
+# Grott Alpha declares these server settings but does not yet read them from
+# environment variables. The add-on exposes them through its configuration UI.
+COPY grottconf-env.patch /tmp/grottconf-env.patch
+RUN patch -l -p0 < /tmp/grottconf-env.patch && rm /tmp/grottconf-env.patch
 
 COPY requirements.txt requirements.txt
 #Install required python packages

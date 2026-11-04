@@ -1,8 +1,21 @@
-# Grott Alpha
+# Grott Beta – Home Assistant Add-on
 
 ## About
 
 This add-on allows you to run a local version of grott with the grott_ha extension on your Home Assistant instance.
+
+## Installation in Home Assistant
+
+No files need to be copied to Home Assistant. In Home Assistant, open
+**Settings → Add-ons → Add-on Store → ⋮ → Repositories**, add the following
+repository URL, then find **Grott Beta branch (3.0)** and select **Install**:
+
+```text
+https://github.com/nielssommer/addon-grott-beta
+```
+
+After installation, configure the add-on, save, and start it. The full setup
+guide is linked below.
 
 [:books: Read the full add-on documentation][docs]
 
@@ -25,14 +38,14 @@ It packages:
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
-[commits-shield]: https://img.shields.io/github/commit-activity/y/egguy/addon-grott-beta.svg
-[commits]: https://github.com/egguy/addon-grott-beta/commits/main
-[github-actions-shield]: https://github.com/egguy/addon-grott-beta/workflows/CI/badge.svg
-[github-actions]: https://github.com/egguy/addon-grott-beta/actions
+[commits-shield]: https://img.shields.io/github/commit-activity/y/nielssommer/addon-grott-beta.svg
+[commits]: https://github.com/nielssommer/addon-grott-beta/commits/main
+[github-actions-shield]: https://github.com/nielssommer/addon-grott-beta/actions/workflows/ci.yaml/badge.svg
+[github-actions]: https://github.com/nielssommer/addon-grott-beta/actions
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
-[license-shield]: https://img.shields.io/github/license/egguy/addon-grott-beta.svg
+[license-shield]: https://img.shields.io/github/license/nielssommer/addon-grott-beta.svg
 [maintenance-shield]: https://img.shields.io/maintenance/yes/2024.svg
 [project-stage-shield]: https://img.shields.io/badge/project%20stage-stable-yellow.svg
-[releases-shield]: https://img.shields.io/github/release/egguy/addon-grott-beta.svg
-[releases]: https://github.com/egguy/addon-grott-beta/releases
-[docs]: https://github.com/egguy/addon-grott-beta/blob/main/grott-beta/DOCS.md
+[releases-shield]: https://img.shields.io/github/v/release/nielssommer/addon-grott-beta.svg
+[releases]: https://github.com/nielssommer/addon-grott-beta/releases
+[docs]: https://github.com/nielssommer/addon-grott-beta/blob/main/grott-beta/DOCS.md

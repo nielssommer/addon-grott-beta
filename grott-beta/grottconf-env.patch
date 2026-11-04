@@ -1,0 +1,14 @@
+--- grottconf.py
++++ grottconf.py
+@@ -567,6 +567,11 @@
+         if os.getenv('ggrowattport') != None :
+             if 0 <= int(os.getenv('ggrowattport')) <= 65535  :  self.growattport = int(self.getenv('ggrowattport'))
+             else :
+                 if self.verbose : print("\nGrott Growatt server Port address env invalid")
++        if os.getenv('gserverpassthrough') != None : self.serverpassthrough = self.getenv('gserverpassthrough')
++        if os.getenv('ghttpport') != None :
++            if 0 <= int(os.getenv('ghttpport')) <= 65535 : self.httpport = int(self.getenv('ghttpport'))
++            else :
++                if self.verbose : print("\nGrott HTTP server port env invalid")
+         #handle Serever environmentals
+         if os.getenv('ConnectionTimeout') != None :  self.nomqtt = self.getenv('ConnectionTimeout')

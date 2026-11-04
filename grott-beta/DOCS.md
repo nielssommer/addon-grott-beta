@@ -6,8 +6,10 @@
 
 - [Grott - Home Assistant native MQTT integration](#grott---home-assistant-native-mqtt-integration)
   - [Requirements](#requirements)
+  - [Installation](#installation)
   - [Configuration of the Wi-Fi logger](#configuration-of-the-wi-fi-logger)
   - [Configuration](#configuration)
+    - [Grottserver and inverter control](#grottserver-and-inverter-control)
     - [Specific inverter configuration](#specific-inverter-configuration)
     - [Multiple inverters configuration](#multiple-inverters-configuration)
     - [External MQTT broker](#external-mqtt-broker)
@@ -22,6 +24,17 @@
 - A MQTT broker (e.g. the Mosquitto broker add-on)
   - If you don't have an MQTT broker yet; in Home Assistant go to **Settings → Add-ons → Add-on store** and install the **Mosquitto broker** add-on.
 - A Growatt inverter with a Wi-Fi module
+
+## Installation
+
+1. In Home Assistant, go to **Settings → Add-ons → Add-on Store**.
+2. Open the three-dot menu, choose **Repositories**, and add
+   `https://github.com/nielssommer/addon-grott-beta`.
+3. Refresh the store if necessary, open **Grott Beta branch (3.0)**, and click
+   **Install**.
+
+The add-on image is built by Home Assistant from this repository. No manual
+copying of add-on files is required.
 
 ## Configuration of the Wi-Fi logger
 
@@ -39,6 +52,27 @@ Here some resources to configure your Wi-Fi logger:
 ## Configuration
 
 If you do a change of configuration. It is important to save and then restart the add-on.
+
+### Grottserver and inverter control
+
+This add-on starts Grott in **server** mode by default. This enables the
+integrated Grottserver while keeping MQTT and the Home Assistant plugin active.
+It listens on TCP port **5781** for the Growatt data logger and exposes its
+control API on port **5782**.
+
+To replace an existing Grottserver host:
+
+1. Install and start this add-on with the default configuration.
+2. Change the Wi-Fi logger's server address to the IPv4 address of Home
+   Assistant and its port to `5781`.
+3. Keep **Forward data to Growatt** enabled if the inverter should continue to
+   report to the Growatt cloud.
+4. Update an integration that sends commands to Grottserver so it uses the
+   Home Assistant IPv4 address and port `5782`.
+
+The existing MQTT broker configuration, MQTT discovery entities, and commands
+remain in the add-on. Do not use `serversa`: Grott's standalone server mode
+intentionally disables MQTT and extension processing.
 
 ### Specific inverter configuration
 

@@ -1,9 +1,9 @@
 ---
-name: Grott Alpha branch (3.0)
-version: dev
+name: Grott Beta branch (3.0)
+version: 0.2.0
 slug: grott-beta
-description: The Growatt inverter monitor with current HA plugin integrated
-url: https://github.com/egguy/addon-grott-beta
+description: The Growatt inverter monitor with the current Home Assistant plugin integrated
+url: https://github.com/nielssommer/addon-grott-beta
 arch:
   - armhf
   - armv7
@@ -17,11 +17,18 @@ map:
   - addon_config:rw
 ports:
   5279/tcp: 5279
+  5781/tcp: 5781
+  5782/tcp: 5782
 ports_description:
-  5279/tcp: The port used by grott to receive the data of the logger
+  5279/tcp: The port used by Grott in proxy mode
+  5781/tcp: The Grottserver TCP port for the Growatt data logger and inverter commands
+  5782/tcp: The Grottserver HTTP API port for inverter control
 options:
   data_path: /config/grott
-  gmode: proxy
+  gmode: server
+  ggrottport: 5781
+  ghttpport: 5782
+  gserverpassthrough: true
   grott_mqtt: false
   ginvtype: default
   ginvtypemap: ""
@@ -56,6 +63,8 @@ schema:
   ginvtypemap: str?
   gminrecl: int?
   gmode: str
+  gserverpassthrough: bool?
+  ghttpport: port?
   gmqttauth: bool?
   gmqttinverterintopic: bool?
   gmqttip: str?
